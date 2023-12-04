@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <style>
+      .container {
+        width: 720px;
+      }
+      .search,
+      .district,
+      .township,
+      .viewPage {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+      }
+      .upperPage {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .choosePage .first,
+      .prev,
+      .next,
+      .last {
+        color: gray;
+        font-size: 13px;
+        padding-left: 10px;
+      }
+      .mainTitle {
+        background-color: #9ec7b8;
+        text-align: center;
+      }
+      .crud {
+        display: flex;
+        justify-content: end;
+        gap: 10px;
+      }
+      input::-webkit-outer-spin-button,
+      input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+      /* .first,
+      .prev,
+      .last,
+      .next ::before {
+        width: 15px;
+        border: 1px solid gray;
+        border-radius: 15px;
+      } */
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="title"><h2>查詢頁</h2></div>
+      <div class="search">
+        <div class="district">
+          <p class="dis">縣市</p>
+          <select name="縣市" id="dis">
+            <option value=""></option>
+          </select>
+        </div>
+        <div class="township">
+          <p class="town">鄉鎮</p>
+          <select name="鄉鎮" id="town">
+            <option value=""></option>
+          </select>
+        </div>
+        <div class="searchBtn"><button>搜尋</button></div>
+      </div>
+      <div class="upperPage">
+        <div class="choosePage">
+          <a href="#" class="first"><i class="fa-solid fa-backward"></i>首頁</a
+          ><a href="#" class="prev"
+            ><i class="fa-solid fa-backward-step"></i>上頁</a
+          ><a href="#" class="next"
+            ><i class="fa-solid fa-forward-step"></i>下頁</a
+          ><a href="#" class="last"><i class="fa-solid fa-forward"></i>末頁</a>
+        </div>
+        <div class="viewPage">
+          共
+          <p class="totalRow" style="color: red">100</p>
+          筆，每頁 <input type="number" style="width: 20px" />筆，目前第
+          <select name="0" id="page">
+            <option value=""></option>
+          </select>
+          頁，共
+          <p class="totalPage" style="color: red">10</p>
+          頁。
+        </div>
+      </div>
+      <table>
+        <thead>
+          <tr class="mainTitle">
+            <td></td>
+            <td class="code">醫事機構代碼</td>
+            <td class="name">醫事機構名稱</td>
+            <td class="address">醫事機構地址</td>
+            <td class="tel">醫事機構電話</td>
+            <td class="adult">成人口罩剩餘數</td>
+            <td class="child">兒童口罩剩餘數</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="mainInfo">
+            <td class="radio"><input type="radio" /></td>
+            <td class="iCode"><a href="#">0145080011</a></td>
+            <td class="iName">衛生福利部花蓮...</td>
+            <td class="iAdd">花蓮縣...</td>
+            <td class="iTel">8358141</td>
+            <td class="iAdult">1530</td>
+            <td class="iChild">1680</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="choosePage">
+        <a href="#" class="first"><i class="fa-solid fa-backward"></i>首頁</a
+        ><a href="#" class="prev"
+          ><i class="fa-solid fa-backward-step"></i>上頁</a
+        ><a href="#" class="next"
+          ><i class="fa-solid fa-forward-step"></i>下頁</a
+        ><a href="#" class="last"><i class="fa-solid fa-forward"></i>末頁</a>
+      </div>
+      <div class="crud">
+        <button class="create">新增</button><button class="edit">編輯</button
+        ><button class="delete">刪除</button>
+      </div>
+    </div>
+  </body>
+</html>

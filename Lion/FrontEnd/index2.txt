@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .code,
+      .name,
+      .add,
+      .tel,
+      .adult,
+      .child {
+        background-color: #9ec7b8;
+      }
+      .iCode,
+      .iName,
+      .iAdd,
+      .iTel,
+      .iAdult,
+      .iChild {
+        border-bottom: 1px solid gray;
+      }
+      .update {
+        margin-top: 10px;
+        margin-right: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="title"><h2>增修頁</h2></div>
+      <table>
+        <thead class="mainInfo">
+          <tr>
+            <td class="code"><span style="color: red">*</span>醫事機構代碼</td>
+            <td class="iCode">0145080011</td>
+          </tr>
+          <tr>
+            <td class="name"><span style="color: red">*</span>醫事機構名稱</td>
+            <td class="iName">
+              <input type="text" value="衛生福利部花蓮..." />
+            </td>
+          </tr>
+          <tr>
+            <td class="add"><span style="color: red">*</span>醫事機構地址</td>
+            <td class="iAdd" style="border-bottom: 1px solid gray">
+              <input type="text" value="花蓮縣..." />
+            </td>
+          </tr>
+          <tr>
+            <td class="tel"><span style="color: red">*</span>醫事機構電話</td>
+            <td class="iTel"><input type="tel" value="8358141" /></td>
+          </tr>
+          <tr>
+            <td class="adult">
+              <span style="color: red">*</span>成人口罩剩餘數
+            </td>
+            <td class="iAdult"><input type="number" value="1530" /></td>
+          </tr>
+          <tr>
+            <td class="child">
+              <span style="color: red">*</span>兒童口罩剩餘數
+            </td>
+            <td class="iChild"><input type="number" value="1680" /></td>
+          </tr>
+        </thead>
+      </table>
+      <div class="editBtn">
+        <button class="update">修改</button><button class="cancel">取消</button>
+      </div>
+    </div>
+  </body>
+</html>

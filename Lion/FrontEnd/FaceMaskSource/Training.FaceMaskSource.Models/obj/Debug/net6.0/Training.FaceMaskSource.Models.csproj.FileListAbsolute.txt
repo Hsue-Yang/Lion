@@ -1,0 +1,12 @@
+C:\Users\User\Desktop\Lion\Lion\FrontEnd\FaceMaskSource\Training.FaceMaskSource.Models\bin\Debug\net6.0\Training.FaceMaskSource.Models.deps.json
+C:\Users\User\Desktop\Lion\Lion\FrontEnd\FaceMaskSource\Training.FaceMaskSource.Models\bin\Debug\net6.0\Training.FaceMaskSource.Models.dll
+C:\Users\User\Desktop\Lion\Lion\FrontEnd\FaceMaskSource\Training.FaceMaskSource.Models\bin\Debug\net6.0\Training.FaceMaskSource.Models.pdb
+C:\Users\User\Desktop\Lion\Lion\FrontEnd\FaceMaskSource\Training.FaceMaskSource.Models\obj\Debug\net6.0\Training.FaceMaskSource.Models.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\User\Desktop\Lion\Lion\FrontEnd\FaceMaskSource\Training.FaceMaskSource.Models\obj\Debug\net6.0\Training.FaceMaskSource.Models.AssemblyInfoInputs.cache
+C:\Users\User\Desktop\Lion\Lion\FrontEnd\FaceMaskSource\Training.FaceMaskSource.Models\obj\Debug\net6.0\Training.FaceMaskSource.Models.AssemblyInfo.cs
+C:\Users\User\Desktop\Lion\Lion\FrontEnd\FaceMaskSource\Training.FaceMaskSource.Models\obj\Debug\net6.0\Training.FaceMaskSource.Models.csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\Lion\Lion\FrontEnd\FaceMaskSource\Training.FaceMaskSource.Models\obj\Debug\net6.0\Training.FaceMaskSource.Models.sourcelink.json
+C:\Users\User\Desktop\Lion\Lion\FrontEnd\FaceMaskSource\Training.FaceMaskSource.Models\obj\Debug\net6.0\Training.FaceMaskSource.Models.dll
+C:\Users\User\Desktop\Lion\Lion\FrontEnd\FaceMaskSource\Training.FaceMaskSource.Models\obj\Debug\net6.0\refint\Training.FaceMaskSource.Models.dll
+C:\Users\User\Desktop\Lion\Lion\FrontEnd\FaceMaskSource\Training.FaceMaskSource.Models\obj\Debug\net6.0\Training.FaceMaskSource.Models.pdb
+C:\Users\User\Desktop\Lion\Lion\FrontEnd\FaceMaskSource\Training.FaceMaskSource.Models\obj\Debug\net6.0\ref\Training.FaceMaskSource.Models.dll

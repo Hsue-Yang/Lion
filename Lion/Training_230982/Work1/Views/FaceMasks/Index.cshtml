@@ -1,0 +1,251 @@
+﻿@using Work1.ViewModels
+@model IEnumerable<CEViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+    string selectedCode = "0";
+    var filterArray = Newtonsoft.Json.JsonConvert.SerializeObject(ViewBag.filterArea);
+    int activePage = (int)ViewData["ActivePage"];
+    int pages = (int)ViewData["Pages"];
+    int totalRows = (int)ViewData["TotalRows"];
+}
+
+@section topCSS {
+    <style>
+        .container {
+            width: 720px;
+        }
+
+        table {
+            font-size: 13px;
+            border-collapse: separate;
+        }
+
+        p {
+            margin-top: auto;
+            margin-bottom: auto;
+        }
+
+        .search,
+        .district,
+        .township,
+        .viewPage {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .upperPage {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .choosePage .first,
+        .prev,
+        .next,
+        .last {
+            color: gray;
+            font-size: 13px;
+            padding-left: 10px;
+        }
+
+        .mainTitle {
+            background-color: #9ec7b8;
+            text-align: center;
+        }
+
+        .crud {
+            display: flex;
+            justify-content: end;
+            gap: 10px;
+        }
+
+            .crud .create, .edit, .delete {
+                text-decoration: none;
+                color: white;
+                padding: 3px 6px;
+                background-color: gray;
+            }
+
+        .searchBtn {
+            text-decoration: none;
+            color: white;
+            padding: 3px 6px;
+            background-color: gray;
+        }
+
+            .searchBtn:hover {
+                color: #0a58ca;
+            }
+
+        .crud .create:hover, .edit:hover, .delete:hover {
+            color: #0a58ca;
+        }
+
+
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+    </style>
+}
+
+<div class="title"><h2>查詢頁</h2></div>
+
+<div class="search" style="margin-bottom:30px;">
+    <form asp-action="Search" method="get" style="display:flex;gap:30px;">
+        <div class="district">
+            <p class="dis" style="margin-right:10px;">縣市</p>
+            <select name="CountyViewModel.City" id="City">
+                <option value="">請選擇</option>
+                @foreach (var city in ViewBag.city)
+                {
+                    <option value="@city.Key">@city.Key</option>
+                }
+            </select>
+        </div>
+        <div class="township">
+            <p class="town" style="margin-right:10px;">鄉鎮</p>
+            <select name="CountyViewModel.Area" id="Area">
+                <option value="">請選擇</option>
+            </select>
+        </div>
+        <div><input type="submit" class="btn searchBtn" value="搜尋" /></div>
+    </form>
+</div>
+
+<div class="upperPage">
+    <div class="choosePage">
+        <a href="#" class="first"><i class="fa-solid fa-backward"></i>首頁</a><a href="#" class="prev"><i class="fa-solid fa-backward-step"></i>上頁</a><a href="#" class="next"><i class="fa-solid fa-forward-step"></i>下頁</a><a href="#" class="last"><i class="fa-solid fa-forward"></i>末頁</a>
+    </div>
+    <div class="viewPage">
+        共
+        <p class="totalRow" style="color: red">@totalRows</p>
+        筆，每頁 <input type="number" style="width: 30px" value="10" readonly />筆，目前第
+        <select name="id" id="page" onchange="PageChange(this)">
+            @for (int i = 1; i <= pages; i++)
+            {
+                <option selected="@(i == activePage)" value="@i">@i</option>
+            }
+        </select>
+        頁，共
+        <p class="totalPage" style="color: red">@pages</p>
+        頁。
+    </div>
+</div>
+
+<table class="table">
+    <thead>
+        <tr class="mainTitle">
+            <th></th>
+            <th class="code">
+                @Html.DisplayNameFor(model => model.FaceMaskViewModel.Code)
+            </th>
+            <th class="name">
+                @Html.DisplayNameFor(model => model.FaceMaskViewModel.Name)
+            </th>
+            <th class="address">
+                @Html.DisplayNameFor(model => model.FaceMaskViewModel.Address)
+            </th>
+            <th class="tel">
+                @Html.DisplayNameFor(model => model.FaceMaskViewModel.Phone)
+            </th>
+            <th class="adult">
+                @Html.DisplayNameFor(model => model.FaceMaskViewModel.AdultCount)
+            </th>
+            <th class="child">
+                @Html.DisplayNameFor(model => model.FaceMaskViewModel.ChildCount)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr class="mainInfo">
+                <td class="radio">@Html.RadioButtonFor(modelItem => item.FaceMaskViewModel.SelectedCode, item.FaceMaskViewModel.Code)</td>
+
+                <td class="iCode"><a asp-action="">@Html.DisplayFor(modelItem => item.FaceMaskViewModel.Code)</a></td>
+                <td class="iName">
+                    @Html.DisplayFor(modelItem => item.FaceMaskViewModel.Name)
+                </td>
+                <td class="iAdd">
+                    @Html.DisplayFor(modelItem => item.FaceMaskViewModel.Address)
+                </td>
+                <td class="iTel">
+                    @Html.DisplayFor(modelItem => item.FaceMaskViewModel.Phone)
+                </td>
+                <td class="iAdult">
+                    @Html.DisplayFor(modelItem => item.FaceMaskViewModel.AdultCount)
+                </td>
+                <td class="iChild">
+                    @Html.DisplayFor(modelItem => item.FaceMaskViewModel.ChildCount)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div class="choosePage">
+    <a href="#" class="first"><i class="fa-solid fa-backward"></i>首頁</a><a href="#" class="prev"><i class="fa-solid fa-backward-step"></i>上頁</a><a href="#" class="next"><i class="fa-solid fa-forward-step"></i>下頁</a><a href="#" class="last"><i class="fa-solid fa-forward"></i>末頁</a>
+</div>
+
+
+<div class="crud">
+    <a asp-action="Create" class="create">新增</a>
+    <a asp-action="Edit" class="edit" onclick="editClicked()" asp-route-code="@selectedCode">編輯</a>
+    <a asp-action="Delete" asp-route-code="@selectedCode" onclick="deleteClicked()" class="delete">刪除</a>
+</div>
+
+
+@section scripts {
+    <script>
+        let cityOption = document.getElementById("City");
+        let areaOption = document.getElementById("Area");
+
+
+        cityOption.addEventListener("change", () => {
+            let cityVal = cityOption.value;
+            const filterA = @Html.Raw(filterArray);
+            let matchArray = filterA.filter((item) => {
+                return cityVal === item.City
+            });
+            if (matchArray) {
+                let AreaArray = matchArray.map((item) => {
+                    return item.Area;
+                })
+                areaOption.innerHTML = "";
+                AreaArray.forEach(area => {
+                    const optionArea = document.createElement("option");
+                    optionArea.value = area;
+                    optionArea.innerText = area;
+                    areaOption.append(optionArea);
+                })
+            }
+        })
+
+        function editClicked() {
+            let selectedRadio = document.querySelector('input[name="item.FaceMaskViewModel.SelectedCode"]:checked');
+            let selectedCode = selectedRadio.value;
+            let editButton = document.querySelector('.edit');
+            editButton.href = '@Url.Action("Edit")' + '?code=' + selectedCode;
+
+        }
+        function deleteClicked() {
+            let selectedRadio = document.querySelector('input[name="item.FaceMaskViewModel.SelectedCode"]:checked');
+            let selectedCode = selectedRadio.value;
+            let deleteButton = document.querySelector('.delete');
+            let result = confirm("確認刪除?");
+            if (result) {
+                deleteButton.href = '@Url.Action("DeleteConfirmed")' + '?code=' + selectedCode;
+            };
+        }
+
+        function PageChange(selectElement) {
+            let selectedPage = selectElement.value;
+            window.location.href = "/FaceMasks/Index?code=" + selectedPage;
+        }
+    </script>
+}
+

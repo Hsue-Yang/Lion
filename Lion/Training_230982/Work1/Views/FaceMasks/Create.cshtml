@@ -1,0 +1,118 @@
+﻿@using Work1.ViewModels
+@model CEViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+@section topCSS {
+    <style>
+        .code,
+        .name,
+        .add,
+        .tel,
+        .adult,
+        .child {
+            background-color: #9ec7b8;
+        }
+
+        .iCode,
+        .iName,
+        .iAdd,
+        .iTel,
+        .iAdult,
+        .iChild {
+            border-bottom: 1px solid gray;
+        }
+
+        table {
+            border-collapse: separate;
+        }
+
+        .editBtn {
+            margin-top: 10px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .create {
+            background-color: gray;
+            padding: 3px 6px;
+            color: white;
+        }
+
+        .cancel {
+            text-decoration: none;
+            color: white;
+            background-color: gray;
+            padding: 4px 7px;
+            border-radius: 2px;
+        }
+    </style>
+}
+<h1>新增</h1>
+
+<div class="row">
+    <form asp-action="Create">
+        <table class="col-md-4">
+            <thead>
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <tr class="form-group">
+                    <th class="code"><span style="color: red">*</span><label asp-for="FaceMaskViewModel.Code" class="control-label"></label></th>
+                    <td class="iCode"><input asp-for="FaceMaskViewModel.Code" class="form-control" /><span asp-validation-for="FaceMaskViewModel.Code" class="text-danger"></span></td>
+                </tr>
+                <tr class="form-group">
+                    <th class="name"><span style="color: red">*</span><label asp-for="FaceMaskViewModel.Name" class="control-label"></label></th>
+                    <td class="iName">
+                        <input asp-for="FaceMaskViewModel.Name" class="form-control" />
+                        <span asp-validation-for="FaceMaskViewModel.Name" class="text-danger"></span>
+                    </td>
+                </tr>
+                <tr class="form-group">
+                    <th class="add"><span style="color: red">*</span><label asp-for="FaceMaskViewModel.Address" class="control-label"></label></th>
+                    <td class="iAdd" style="border-bottom: 1px solid gray">
+                        <input asp-for="FaceMaskViewModel.Address" class="form-control" />
+                        <span asp-validation-for="FaceMaskViewModel.Address" class="text-danger"></span>
+                    </td>
+                </tr>
+                <tr class="form-group">
+                    <th class="tel"><span style="color: red">*</span><label asp-for="FaceMaskViewModel.Phone" class="control-label"></label></th>
+                    <td class="iTel">
+                        <input asp-for="FaceMaskViewModel.Phone" class="form-control" />
+                        <span asp-validation-for="FaceMaskViewModel.Phone" class="text-danger"></span>
+                    </td>
+                </tr>
+                <tr class="form-group">
+                    <th class="adult">
+                        <span style="color: red">*</span><label asp-for="FaceMaskViewModel.AdultCount" class="control-label"></label>
+                    </th>
+                    <td class="iAdult">
+                        <input asp-for="FaceMaskViewModel.AdultCount" class="form-control" />
+                        <span asp-validation-for="FaceMaskViewModel.AdultCount" class="text-danger"></span>
+                    </td>
+                </tr>
+                <tr class="form-group">
+                    <th class="child">
+                        <span style="color: red">*</span><label asp-for="FaceMaskViewModel.ChildCount" class="control-label"></label>
+                    </th>
+                    <td class="iChild">
+                        <input asp-for="FaceMaskViewModel.ChildCount" class="form-control" />
+                        <span asp-validation-for="FaceMaskViewModel.ChildCount" class="text-danger"></span>
+                    </td>
+                </tr>
+                <input asp-for="FaceMaskViewModel.SourceTime" type="hidden" class="form-control" value="@DateTime.Now" />
+                <span asp-validation-for="FaceMaskViewModel.SourceTime" class="text-danger"></span>
+            </thead>
+        </table>
+        <div class="form-group editBtn">
+            <input type="submit" value="新增" class="btn create" />
+            <a asp-action="Index" class="cancel">取消</a>
+        </div>
+    </form>
+</div>
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

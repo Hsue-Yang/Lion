@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "cAprQoskcZpIKobSlyAfaynUbd5NnCMqBZlIcWOquxM=",
+  "Source": "Training.FaceMaskSource",
+  "BasePath": "_content/Training.FaceMaskSource",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
