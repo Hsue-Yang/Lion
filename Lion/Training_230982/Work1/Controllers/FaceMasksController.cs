@@ -39,12 +39,12 @@ namespace Work1.Controllers
                         List<FaceMaskViewModel> jsonFile = JsonConvert.DeserializeObject<List<FaceMaskViewModel>>(readTask.Result);
 
                         //新增快取
-                        _memoryCache.Set(faceCacheKey, jsonFile, TimeSpan.FromSeconds(30));
+                        _memoryCache.Set(faceCacheKey, jsonFile, TimeSpan.FromSeconds(10));
 
                         //資料寫入資料庫
                         var existingCode = await _context.FaceMasks.Select(s => s.Code).ToListAsync();
                         var matchCode = jsonFile.Where(j => existingCode.Contains(j.Code)).ToList();
-                        if (!(matchCode.Count > 0))
+                        if (matchCode.Count <= 0)
                         {
                             var fm = jsonFile.Select(jsonFile => new FaceMask()
                             {
@@ -151,6 +151,7 @@ namespace Work1.Controllers
             var IsEdit = new CEViewModel
             {
                 IsEdit = false,
+                IsReadOnly = false,
             };
             return View("CreaEdit", IsEdit);
         }
@@ -174,27 +175,32 @@ namespace Work1.Controllers
             {
                 if (FaceMaskExists(faceMask.Code))
                 {
-                    return View("Error");
+                    var cvm = new CEViewModel()
+                    {
+                        IsEdit = false,
+                    };
+                    ViewData["Error"] = "相同的Code已存在";
+                    return View("CreaEdit", cvm);
                 }
                 _context.Add(faceMask);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View("CreaEdit", faceMask);
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: FaceMasks/Edit
-        public async Task<IActionResult> Edit(string code)
+        public async Task<IActionResult> Edit(string code, bool? editMode)
         {
             if (code == null)
             {
-                return NotFound();
+                return RedirectToAction("Index");
             }
 
             var faceMask = await _context.FaceMasks.FirstOrDefaultAsync(c => c.Code == code);
             if (faceMask == null)
             {
-                return NotFound();
+                return RedirectToAction("Index");
             }
 
             var vm = new CEViewModel()
@@ -209,8 +215,10 @@ namespace Work1.Controllers
                     ChildCount = faceMask.ChildCount,
                     SourceTime = faceMask.SourceDatetime,
                 },
-                IsEdit = true
+                IsEdit = true,
+                IsReadOnly = editMode ?? false
             };
+
             return View("CreaEdit", vm);
         }
 
@@ -280,10 +288,15 @@ namespace Work1.Controllers
             {
                 _context.FaceMasks.Remove(faceMask);
             }
+            else
+            {
+                return RedirectToAction("Index");
+            }
 
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
+
 
         public bool FaceMaskExists(string id)
         {

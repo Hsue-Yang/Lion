@@ -118,7 +118,7 @@
 
 <div class="upperPage">
     <div class="choosePage">
-        <a href="#" class="first"><i class="fa-solid fa-backward"></i>首頁</a><a href="#" class="prev"><i class="fa-solid fa-backward-step"></i>上頁</a><a href="#" class="next"><i class="fa-solid fa-forward-step"></i>下頁</a><a href="#" class="last"><i class="fa-solid fa-forward"></i>末頁</a>
+        <a asp-action="Index" class="first"><i class="fa-solid fa-backward"></i>首頁</a><a href="#" class="prev"><i class="fa-solid fa-backward-step"></i>上頁</a><a href="#" class="next"><i class="fa-solid fa-forward-step"></i>下頁</a><a href="#" class="last"><i class="fa-solid fa-forward"></i>末頁</a>
     </div>
     <div class="viewPage">
         共
@@ -166,7 +166,7 @@
             <tr class="mainInfo">
                 <td class="radio">@Html.RadioButtonFor(modelItem => item.FaceMaskViewModel.SelectedCode, item.FaceMaskViewModel.Code)</td>
 
-                <td class="iCode"><a asp-action="">@Html.DisplayFor(modelItem => item.FaceMaskViewModel.Code)</a></td>
+                <td class="iCode"><a class="detailBtn" asp-action="Edit" asp-route-code="@item.FaceMaskViewModel.Code" asp-route-editMode="true">@Html.DisplayFor(modelItem => item.FaceMaskViewModel.Code)</a></td>
                 <td class="iName">
                     @Html.DisplayFor(modelItem => item.FaceMaskViewModel.Name)
                 </td>
@@ -188,14 +188,14 @@
 </table>
 
 <div class="choosePage">
-    <a href="#" class="first"><i class="fa-solid fa-backward"></i>首頁</a><a href="#" class="prev"><i class="fa-solid fa-backward-step"></i>上頁</a><a href="#" class="next"><i class="fa-solid fa-forward-step"></i>下頁</a><a href="#" class="last"><i class="fa-solid fa-forward"></i>末頁</a>
+    <a asp-action="Index" class="first"><i class="fa-solid fa-backward"></i>首頁</a><a href="#" class="prev"><i class="fa-solid fa-backward-step"></i>上頁</a><a href="#" class="next"><i class="fa-solid fa-forward-step"></i>下頁</a><a asp-action="Index" class="last"><i class="fa-solid fa-forward"></i>末頁</a>
 </div>
 
 
 <div class="crud">
     <a asp-action="Create" class="create">新增</a>
     <a asp-action="Edit" class="edit" onclick="editClicked()" asp-route-code="@selectedCode">編輯</a>
-    <a asp-action="Delete" asp-route-code="@selectedCode" onclick="deleteClicked()" class="delete">刪除</a>
+    <a asp-action="DeleteConfirmed" asp-route-code="@selectedCode" asp-route-editMode="false" onclick="deleteClicked()" class="delete">刪除</a>
 </div>
 
 
